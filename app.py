@@ -58,7 +58,9 @@ def validate_sensor_data(data):
         print(f"예기치 못한 검증 에러 발생: {str(e)}")
         return False, "Internal validation error"
 
-
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify({"message": "Welcome to the PulseWave AI Server!"}), 200
 
 @app.route('/ai/predict', methods=['POST'])
 def predict():
