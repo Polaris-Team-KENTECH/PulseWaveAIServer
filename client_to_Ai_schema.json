@@ -1,0 +1,90 @@
+{
+    "type": "object",
+    "properties": {
+        "request_id": { "type": "string" },
+        "raw_datas": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "device_id": { "type": "string" },
+                    "timestamp": { "type": "string" },
+                    "csi": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "subcarrier_index": { "type": "number" },
+                                "real": { "type": "number" },
+                                "imag": { "type": "number" },
+                                "amplitude": { "type": "number" },
+                                "phase": { "type": "number" }
+                            },
+                            "required": [
+                                "subcarrier_index",
+                                "real",
+                                "imag",
+                                "amplitude",
+                                "phase"
+                            ]
+                        }
+                    },
+                    "rssi": { "type": "number" },
+                    "metadata": {
+                        "type": "object",
+                        "properties": {
+                            "tx_mac": { "type": "string" },
+                            "rx_mac": { "type": "string" },
+                            "wifi_channel": { "type": "number" },
+                            "bandwidth": { "type": "string" }
+                        },
+                        "required": [
+                            "tx_mac",
+                            "rx_mac",
+                            "wifi_channel",
+                            "bandwidth"
+                        ]
+                    },
+                    "position": {
+                        "type": "object",
+                        "properties": {
+                            "latitude": { "type": "number" },
+                            "longitude": { "type": "number" },
+                            "altitude": { "type": "number" },
+                            "unit": {
+                                "type": "object",
+                                "properties": {
+                                    "latitude": { "type": "string" },
+                                    "longitude": { "type": "string" },
+                                    "altitude": { "type": "string" }
+                                },
+                                "required": [
+                                    "latitude",
+                                    "longitude",
+                                    "altitude"
+                                ]
+                            },
+                            "coordinate_system": { "type": "string" }
+                        },
+                        "required": [
+                            "latitude",
+                            "longitude",
+                            "altitude",
+                            "unit",
+                            "coordinate_system"
+                        ]
+                    }
+                },
+                "required": [
+                    "device_id",
+                    "timestamp",
+                    "csi",
+                    "rssi",
+                    "metadata",
+                    "position"
+                ]
+            }
+        }
+    },
+    "required": ["request_id", "raw_datas"]
+}
